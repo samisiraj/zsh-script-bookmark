@@ -20,6 +20,7 @@ bm(){
         /usr/bin/sed -i '' "s|^$name=.*|$name=$path|" $BOOKMARK_FILE
         echo "updated bookmark '$name' -> $path"
     else
+        echo "" >> $BOOKMARK_FILE
         echo "$name=$path" >> $BOOKMARK_FILE
         echo "saved bookmark '$name' -> $path"
     fi
