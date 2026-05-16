@@ -58,14 +58,14 @@ bml(){
 bmd(){
     local name=$1
 
-    if [ -z "$name ]; then
+    if [ -z "$name" ]; then
         echo "Usage: delete <name>"
         return 1
     fi
 
-    if /usr/bin/grep -q "$name" $BOOKMARK_FILE ;
+    if /usr/bin/grep -q "^$name" $BOOKMARK_FILE ;
     then
-        /usr/bin/sed -i '' "|^$name=|d" $BOOKMARK_FILE
+        /usr/bin/sed -i '' "/^$name=/d" $BOOKMARK_FILE
         echo "deleted bookmark '$name'"
     else
         echo "bookmark '$name' name not found"
