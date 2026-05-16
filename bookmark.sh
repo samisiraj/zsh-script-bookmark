@@ -25,6 +25,7 @@ bm(){
         echo "saved bookmark '$name' -> $path"
     fi
 }
+
 go(){
     local name=$1
     local path=$(grep "^$name" $BOOKMARK_FILE | cut -d "=" -f 2)
@@ -43,4 +44,13 @@ go(){
 
     cd "$path"
     echo "changed directory to '$name' -> $path"
+}
+
+bml(){
+    if [ ! -s $BOOKMARK_FILE ]; then
+        echo "no bookmarks saved yet"
+        return
+    fi
+    echo "Your bookmarks:"
+    cat $BOOKMARK_FILE
 }
