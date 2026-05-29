@@ -20,11 +20,28 @@ bm(){
         /usr/bin/sed -i '' "s|^$name=.*|$name=$path|" $BOOKMARK_FILE
         echo "updated bookmark '$name' -> $path"
     else
-        echo "" >> $BOOKMARK_FILE
         echo "$name=$path" >> $BOOKMARK_FILE
         echo "saved bookmark '$name' -> $path"
     fi
 }
+
+bmp(){
+    local name=$1
+    if [ -z "$name" ];
+    then
+        echo "Usage: bmp <name>"
+        return 1
+    fi
+
+    if /usr/bin/grep -q "^$name=" $BOOKMARK_FILE ;
+    then
+        local path=$(grep "^$name=" $BOOKMARK_FILE | cut -d "=" -f 2)
+        echo "bookmark's path -> $path"
+    else
+        echo "bookmark $name not found"
+    fi
+}
+        
 
 go(){
     local name=$1
