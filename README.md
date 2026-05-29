@@ -21,6 +21,7 @@ source ~/.zshrc
 | Command      |      Description                   |
 |---           |                                 ---|
 | `bm <name>`  | save current directory as bookmark |
+| `bmp <name>` | print path of a bookmark           |
 | `go <name>`  | jump to saved bookmark             |
 | `bml`        | list all bookmarks                 |
 | `bmd <name>` | delete a bookmark                  |
